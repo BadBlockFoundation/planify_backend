@@ -1,5 +1,5 @@
 const serveurConfig = require("./config/server");
-
+const passport = require("./middleware/auth/auth.middleware");
 const express = require('express');
 const database = require('./models/index');
 const router = require('./api-routes/router');
@@ -16,6 +16,7 @@ database.sequelize.sync({ force: true });
 
 //Load Routes
 router(app);
+app.use(passport.initialize());
 
 app.listen(serveurConfig.PORT, ()=>{
   console.log("Serveur is running on : "+ serveurConfig.PORT );

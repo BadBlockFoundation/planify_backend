@@ -33,7 +33,7 @@ describe('Users', () => {
         let goodHash = bcrypt.compareSync(usrInsert.password, user.password);
         assert.equal(goodHash, false);
 
-        console.log(usrInsert.dataValues)
+        console.log("get users" +err)
         done()
       })
   });

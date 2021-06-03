@@ -1,8 +1,7 @@
 const UserService = require("../services/user.service");
 const db = require("../models/index");
 const User = db.users;
-const Bcrypt = require("bcrypt");
-const userService = new UserService(User, Bcrypt);
+const userService = new UserService(User);
 
 
 /**
@@ -68,6 +67,17 @@ async function createUser(req, res, next) {
       success: false,
       payload: e
     })
+  }
+}
+
+
+async function loginUser(req, res, next) {
+  try {
+    //TODO
+
+  } catch (e) {
+    //TODO
+
   }
 }
 

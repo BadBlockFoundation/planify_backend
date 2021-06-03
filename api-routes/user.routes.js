@@ -14,7 +14,9 @@ router.route('/:id').get(userController.findById);
 /**
  * POST Routes
  */
-router.route('/').post(userController.createUser);
+router.route('/signup').post(userController.createUser);
+router.route('/login').post(userController.createUser);
+
 
 /**
  * UPDATES Routes

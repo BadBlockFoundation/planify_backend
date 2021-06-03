@@ -11,9 +11,8 @@ class UserService {
    * @param  {type} User description
    * @return {type}      description
    */
-  constructor(User, Bcrypt) {
+  constructor(User) {
     this.User = User;
-    this.bcrypt = Bcrypt;
   }
 
 
@@ -52,10 +51,7 @@ class UserService {
   async createUser(data) {
     try {
       console.log(data)
-      const _usr = this.User.build({
-        email: data.email,
-        password: await this.bcrypt.hash(data.password, 10)
-      });
+      const _usr = this.User.build(data);
       await _usr.save();
       return _usr;
 
