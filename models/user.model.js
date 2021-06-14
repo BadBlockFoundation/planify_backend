@@ -38,9 +38,15 @@ module.exports = (sequelize, Sequelize) => {
     }
   });
 
-  User.isValidPassword = async function(password){
+  User.prototype.isValidPassword = async function(password){
+    try{
       let hash = await bcrypt.compare(this.password, password);
       return hash;
+    } catch(e){
+      throw e;
+
+    }
+
   }
 
   return User;

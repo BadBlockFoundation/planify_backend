@@ -1,8 +1,9 @@
 const UserService = require("../services/user.service");
 const db = require("../models/index");
 const User = db.users;
-const userService = new UserService(User);
+const jwt = require('jsonwebtoken');
 
+const userService = new UserService(User);
 
 /**
  * getAll - description
@@ -54,12 +55,14 @@ async function findById(req, res, next) {
 
 }
 
-async function createUser(req, res, next) {
+async function signupUser(req, res, next) {
   try {
-    let data = await userService.createUser(req.body);
     res.status(200).send({
       success: true,
-      payload: data
+      payload: req.user,
+      token: req.authInfo.token,
+      expiresIn: req.authInfo.expiresIn
+
     })
 
   } catch (e) {
@@ -73,17 +76,31 @@ async function createUser(req, res, next) {
 
 async function loginUser(req, res, next) {
   try {
-    //TODO
+    res.status(200).send({
+      success: true,
+      payload: req.user,
+      token: req.authInfo.token,
+      expiresIn: req.authInfo.expiresIn
+
+    })
 
   } catch (e) {
-    //TODO
-
+    res.status(500).send({
+      success: false,
+      payload: e
+    })
   }
+}
+
+async function jwtUser(err, user, info) {
+
 }
 
 
 module.exports = {
   getAll,
   findById,
-  createUser
+  signupUser,
+  loginUser,
+  jwtUser
 };
