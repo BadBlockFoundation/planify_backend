@@ -9,16 +9,18 @@ const options = {
   algorithm: ['RS256']
 };
 
-module.exports = new JwtStrategy(options, async (jwt_payload,done)=>{
-  User.findOne({_id: jwt_payload.sub})
-  .then((user)=>{
-    if(user){
-      return done(null, user);
-    }else{
-      return done(null,false);
-    }
+module.exports = new JwtStrategy(options, async (jwt_payload, done) => {
+  User.findOne({
+      _id: jwt_payload.sub
+    })
+    .then((user) => {
+      if (user) {
+        return done(null, user);
+      } else {
+        return done(null, false);
+      }
 
-  })
-  .catch(err=>done(err,null));
+    })
+    .catch(err => done(err, null));
 
 })

@@ -27,14 +27,14 @@ module.exports = new localStrategy({
           message: 'Mauvais mot de passe'
         });
       }
-        const jwt = authLib.issueJWT(user);
+      const jwt = authLib.issueJWT(user);
       return done(null, user, {
         message: 'Connexion réussie',
         token: jwt.token,
-       expiresIn: jwt.expiresIn,
+        expiresIn: jwt.expiresIn,
       })
     } catch (e) {
-       return done(null, false);
+      return done(null, false);
     }
   }
 )

@@ -18,11 +18,11 @@ describe('Users', () => {
 
   it('should get post a user', (done) => {
     var user = {
-      'email': 'a.pinier.rafercom',
+      'email': 'a.pinier.rafer@gmail.com',
       'password': '0123456789'
     }
     request(app)
-      .post('/users/')
+      .post('/users/signup')
       .send(user)
       .expect(200)
       .end(async (err, res) => {
@@ -38,10 +38,6 @@ describe('Users', () => {
       })
   });
 
-  it('should get All users', (done) => {
-    request(app)
-      .get('/users/all')
-      .expect(200, done)
-  });
+
 
 });
