@@ -21,7 +21,8 @@ module.exports = new localStrategy({
         });
       }
 
-      const validate = user.isValidPassword(password);
+      const validate = await user.isValidPassword(password);
+      console.log(validate)
       if (!validate) {
         return done(null, false, {
           message: 'Mauvais mot de passe'

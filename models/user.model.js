@@ -40,7 +40,8 @@ module.exports = (sequelize, Sequelize) => {
 
   User.prototype.isValidPassword = async function(password){
     try{
-      let hash = await bcrypt.compare(this.password, password);
+      console.log(password)
+      let hash = await bcrypt.compare(password, this.password);
       return hash;
     } catch(e){
       throw e;
