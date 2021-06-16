@@ -18,6 +18,8 @@ describe('Users', () => {
 
   it('should get post a user', (done) => {
     var user = {
+it('should get post a user', (done) => {
+      var user = {
       'email': 'a.pinier.rafer@gmail.com',
       'password': '0123456789'
     }
